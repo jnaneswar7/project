@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MST LAB</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        .button-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.2s ease, filter 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.1);
+        }
+
+        /* Blur all other buttons except the hovered one */
+        .button-container button:hover ~ button:not(:hover),
+        .button-container:hover button:not(:hover) {
+            filter: blur(5px);
+            opacity: 0.2;
+        }
+
+        button:active {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <h1>Projects</h1>
+    <div class="button-container">
+        <button class="animate-btn">animate_image</button>
+        <button class="countdown-btn">countdown</button>
+        <button class="darkmode-btn">dark_mode</button>
+        <button class="expense-btn">expense_tracker</button>
+        <button class="image-btn">image_viewer</button>
+        <button class="quiz-btn">quiz_app</button>
+        <button class="stopwatch-btn">stopwatch</button>
+        <button class="todo-btn">to_do_list</button>
+        <button class="weather-btn">weather_app</button>
+    </div>
+
+    <script>
+        // Define button-to-page mapping
+        const buttonPageMap = {
+            "animate-btn": "animateimage.html",
+            "countdown-btn": "countdown.html",
+            "darkmode-btn": "darkmode.html",
+            "expense-btn": "expense.html",
+            "image-btn": "image.html",
+            "quiz-btn": "quiz.html",
+            "stopwatch-btn": "stopwatch.html",
+            "todo-btn": "todo.html",
+            "weather-btn": "weather.html"
+        };
+
+        // Add event listeners for buttons
+        Object.keys(buttonPageMap).forEach(className => {
+            const button = document.querySelector(`.${className}`);
+            button.addEventListener("click", () => {
+                // Open the respective page in a new tab
+                window.open(buttonPageMap[className], "_blank");
+            });
+        });
+    </script>
+</body>
+</html>

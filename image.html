@@ -1,0 +1,19 @@
+<div id="carousel" style="width: 300px; overflow: hidden;">
+    <img src="pic1.jpg" width="300">
+    <img src="pic2.jpg" width="300">
+    <img src="pic3.jpg" width="300">
+  </div>
+  <button onclick="nextImage()">Next</button>
+  
+  <script>
+    let currentImage = 0;
+  
+    function nextImage() {
+      const carousel = document.getElementById("carousel");
+      const images = carousel.getElementsByTagName("img");
+      currentImage = (currentImage + 1) % images.length;
+      carousel.scrollLeft = currentImage * 300;
+    }
+  </script>
+  
+  

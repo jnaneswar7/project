@@ -1,0 +1,25 @@
+<input id="timeInput" type="number" placeholder="Enter seconds" />
+<button onclick="startCountdown()">Start Countdown</button>
+<p id="countdown"></p>
+
+<script>
+  let countdownInterval;
+
+  function startCountdown() {
+    const seconds = parseInt(document.getElementById("timeInput").value);
+    let timeRemaining = seconds;
+
+    if (countdownInterval) clearInterval(countdownInterval);
+
+    countdownInterval = setInterval(() => {
+      if (timeRemaining > 0) {
+        document.getElementById("countdown").innerText = timeRemaining + " seconds remaining";
+        timeRemaining--;
+      } else {
+        clearInterval(countdownInterval);
+        alert("Time's up!");
+      }
+    }, 1000);
+  }
+</script>
+

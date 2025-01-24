@@ -1,0 +1,41 @@
+<input id="expense" placeholder="Enter expense name" />
+<input id="amount" placeholder="Enter amount" type="number" />
+<button onclick="addExpense()">Add Expense</button>
+<ul id="expenseList"></ul>
+<p>Total: $<span id="total">0</span></p>
+
+<script>
+  const expenses = [];
+
+  function addExpense() {
+    const expenseName = document.getElementById("expense").value;
+    const expenseAmount = parseFloat(document.getElementById("amount").value);
+
+    if (expenseName && expenseAmount) {
+      expenses.push({ name: expenseName, amount: expenseAmount });
+      updateExpenses();
+    }
+  }
+
+  function updateExpenses() {
+    const list = document.getElementById("expenseList");
+    const total = document.getElementById("total");
+    list.innerHTML = "";
+    let totalAmount = 0;
+
+    expenses.forEach((expense, index) => {
+      totalAmount += expense.amount;
+      const item = document.createElement("li");
+      item.innerHTML = `${expense.name} - $${expense.amount} <button onclick="removeExpense(${index})">Delete</button>`;
+      list.appendChild(item);
+    });
+
+    total.innerText = totalAmount;
+  }
+
+  function removeExpense(index) {
+    expenses.splice(index, 1);
+    updateExpenses();
+  }
+</script>
+

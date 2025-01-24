@@ -1,0 +1,31 @@
+<p id="timer">0</p>
+<button onclick="startTimer()">Start</button>
+<button onclick="pauseTimer()">Pause</button>
+<button onclick="resetTimer()">Reset</button>
+
+<script>
+  let interval;
+  let seconds = 0;
+
+  function startTimer() {
+    if (!interval) {
+      interval = setInterval(() => {
+        seconds++;
+        document.getElementById("timer").innerText = seconds;
+      }, 1000);
+    }
+  }
+
+  function pauseTimer() {
+    clearInterval(interval);
+    interval = null;
+  }
+
+  function resetTimer() {
+    clearInterval(interval);
+    interval = null;
+    seconds = 0;
+    document.getElementById("timer").innerText = "0";
+  }
+</script>
+
